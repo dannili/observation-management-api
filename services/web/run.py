@@ -17,7 +17,7 @@ def create_db():
 # run 'docker-compose exec web python run.py test_db'
 @cli.command("test_db")
 def test_db():
-	target_sample = Target(name='Toronto', latitude=43.6532)
+	target_sample = Target(name='Mont Tremblant', latitude=46.1185, longitude=74.5962, elevation=875)
 
 	db.session.add(target_sample)
 	db.session.commit()

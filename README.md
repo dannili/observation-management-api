@@ -22,3 +22,17 @@ Check out [here](https://github.com/GHGSat/tech-challenge/blob/master/webdev/REA
 ### Running Tests
 
 ### Test via Postman
+
+(Download [Postman](https://www.postman.com/downloads/))
+
+1. Create a new target:
+    ```sh
+    POST http://localhost:5000/new-target
+    Body JSON sample:
+    {
+    	"name": "Mont-Tremblant",
+    	"latitude": 68.1185,
+    	"longitude": -40.5962,
+    	"elevation": -220.23
+	}	 
+    ```
