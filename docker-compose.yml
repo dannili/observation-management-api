@@ -1,0 +1,27 @@
+version: '3.8'
+
+volumes:
+  # for persistence between restarts
+  postgres_data: {}
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=targets_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=5656
+
+  web:
+    build: ./services/web
+    command: python run.py run -h 0.0.0.0
+    volumes:
+      - ./services/web/:/usr/src/app/
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
