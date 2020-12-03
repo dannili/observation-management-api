@@ -8,3 +8,6 @@
 # - Elevation is out of range
 # - Elevation is not a number
 # - Creation is successful
+
+# - Update target with no image/datetime
+# - ...
