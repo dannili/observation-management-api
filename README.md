@@ -82,14 +82,13 @@ The API currently supports the following endpoints:
     } 
     ```
 
-### Running Tests
-(Tests are WIP)
-    ```sh
+### Running Tests (Tests are WIP)
+    ```
     pytest test_app.py
     ```
 
 
 Stop containers:
-    ```sh
+    ```
     docker-compose down -v
     ```
