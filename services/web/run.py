@@ -13,6 +13,7 @@ def create_db():
     db.create_all()
     db.session.commit()
 
+# TODO: Fix this
 # To add a sample target to the table,
 # run 'docker-compose exec web python run.py test_db'
 @cli.command("test_db")

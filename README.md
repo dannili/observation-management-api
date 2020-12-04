@@ -2,7 +2,12 @@
 
 ## Features
 
-Check out [here](https://github.com/GHGSat/tech-challenge/blob/master/webdev/README.md#challenge-3-observation-management).
+The API currently supports the following endpoints:
+
+1. Target creation
+2. Save image to an existing target
+3. Search targets by a bounding box
+
 
 ## Get It Running
 
@@ -21,8 +26,12 @@ Check out [here](https://github.com/GHGSat/tech-challenge/blob/master/webdev/REA
 
     (Download [Docker](https://www.docker.com/products/docker-desktop))
 
+3. Create a database using the cli tool:
+    ```sh
+    $ docker-compose exec web python run.py create_db
+    ```
 
-3. Quickly test it out at [http://localhost:5000](http://localhost:5000)
+4. Check [http://localhost:5000](http://localhost:5000) to see if server is up running.
 
 ### Try via Postman
 
@@ -34,10 +43,11 @@ Check out [here](https://github.com/GHGSat/tech-challenge/blob/master/webdev/REA
     Body JSON sample:
     {
         "name": "Mont-Tremblant",
-        "latitude": 46.1185,
-        "longitude": 74.5962,
-        "elevation": 875
-	}	 
+        "latitude": 68.1185,
+        "longitude": -40.5962,
+        "geomerty": "point(-40.5962 68.1185)",
+        "elevation": 875.0
+    } 
     ```
 
 2. Save image and capture time to an existing target:
@@ -49,4 +59,16 @@ Check out [here](https://github.com/GHGSat/tech-challenge/blob/master/webdev/REA
         "image_timestamp": "2020-12-02 19:03:30"
 	}	 
     ```
+3. Search by a bounding box:
+    ```sh
+    GET http://localhost:5000/targets/search
+    Body JSON sample:
+    {
+        "xmin": -141.00275,
+        "ymin": 41.6765556,
+        "xmax": -30.3231981,
+        "ymax": 83.3362128
+    } 
+    ```
+
 ### Running Tests

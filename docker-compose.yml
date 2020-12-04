@@ -3,10 +3,15 @@ version: '3.8'
 volumes:
   # for persistence between restarts
   postgres_data: {}
+  elasticsearch-data:
+    driver: local
+networks:
+  elastic:
+    driver: bridge
 
 services:
   db:
-    image: postgres
+    image: mdillon/postgis
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
@@ -25,3 +30,33 @@ services:
       - ./.env.dev
     depends_on:
       - db
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
+    container_name: elasticsearch
+    environment:
+      - node.name=es01
+      - cluster.name=es-docker-cluster
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - elastic
+
+  # kibana:
+  #   container_name: kibana
+  #   image: docker.elastic.co/kibana/kibana:7.8.0
+  #   environment:
+  #     - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+  #   ports:
+  #     - 5601:5601
+  #   depends_on:
+  #     - elasticsearch
