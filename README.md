@@ -7,6 +7,7 @@ The API currently supports the following endpoints:
 1. Target creation
 2. Save image to an existing target
 3. Search targets by a bounding box
+(See "Try via Postman" section below for examples)
 
 
 ## Get It Running
@@ -32,6 +33,16 @@ The API currently supports the following endpoints:
     ```
 
 4. Check [http://localhost:5000](http://localhost:5000) to see if server is up running.
+
+5. Access the database:
+    ```sh
+    $ docker-compose exec db psql --username=postgres --dbname=targets_dev
+    ```
+    ```sh
+    targets_dev=# select * from targets;
+    ```
+    type \q to exit
+
 
 ### Try via Postman
 
@@ -72,3 +83,13 @@ The API currently supports the following endpoints:
     ```
 
 ### Running Tests
+(Tests are WIP)
+    ```sh
+    pytest test_app.py
+    ```
+
+
+Stop containers:
+    ```sh
+    docker-compose down -v
+    ```

@@ -1,0 +1,35 @@
+{
+  "targets": [
+    {
+      //This should fail due to geomerty is missing
+      "id": 1,
+      "name": "Toronto",
+      "latitude": "43.6532",
+      "longitude": "79.3832",
+      "elevation": "76",
+      "image":"",
+      "image_timestamp": ""
+    },
+    {
+      //This should fail on lat/long validation
+      "id": 2,
+      "name": "New York City",
+      "latitude": "240.7128",
+      "longitude": "274.0060",
+      "geomerty": "point(274.0060 240.7128)",
+      "elevation": "10",
+      "image":"",
+      "image_timestamp": ""
+    },
+    {
+      "id": 3,
+      "name": "Montreal",
+      "latitude": "45.5017",
+      "longitude": "73.5673",
+      "geomerty": "point(73.5673 45.5017)",
+      "elevation": "233",
+      "image":"upload.wikimedia.org/wikipedia/commons/6/6b/Mont_Tremblant%2C_Quebec_%286903201864%29.jpg",
+      "image_timestamp": "2020-12-02 19:03:30"
+    }
+  ]
+}

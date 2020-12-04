@@ -1,4 +1,4 @@
-# Define environment specific configuration variables
+""" Define environment specific configuration variables """
 
 import os
 

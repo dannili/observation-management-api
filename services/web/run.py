@@ -1,7 +1,8 @@
-# Falsk CLI tool to run the app from the command line
+""" Falsk CLI tool to run the app from the command line """
 
 from flask.cli import FlaskGroup
-from app import app, db, Target
+from app import app, db
+from app.models import Target
 
 cli = FlaskGroup(app)
 
